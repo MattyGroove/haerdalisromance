@@ -2,7 +2,7 @@
 
 // HD-Jaheira banter
 
-CHAIN IF ~OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) Global("LS_HaerDalisRomanceActive","GLOBAL",2) CombatCounter(0) !Detect([ENEMY]) InParty("Jaheira") InMyArea("Jaheira") !StateCheck("Jaheira",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
+CHAIN IF WEIGHT #-1~OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) Global("LS_HaerDalisRomanceActive","GLOBAL",2) CombatCounter(0) !Detect([ENEMY]) InParty("Jaheira") InMyArea("Jaheira") !StateCheck("Jaheira",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
 Global("LS_HDJaheiraTOB","GLOBAL",0)~ THEN ~BHAERD25~ LS_tobjahd
 @0
 DO ~SetGlobal("LS_HDJaheiraTOB","GLOBAL",1)~
@@ -19,7 +19,7 @@ EXIT
 
 // Imoen-HD banter, committed romance only
 
-CHAIN IF ~Global("LS_HaerDalisRomanceActive","GLOBAL",2) CombatCounter(0) !Detect([ENEMY]) InParty("HaerDalis") InMyArea("HaerDalis") !StateCheck("HaerDalis",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
+CHAIN IF WEIGHT #-1~Global("LS_HaerDalisRomanceActive","GLOBAL",2) CombatCounter(0) !Detect([ENEMY]) InParty("HaerDalis") InMyArea("HaerDalis") !StateCheck("HaerDalis",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
 Global("LS_HDImoenTOB","GLOBAL",0)~ THEN ~BIMOEN25~ LS_tobimhd
 @10
 DO ~SetGlobal("LS_HDImoenTOB","GLOBAL",1)~
@@ -34,7 +34,7 @@ EXIT
 
 // HD-Korgan banter, no conditions
 
-CHAIN IF ~OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty("Korgan") InMyArea("Korgan") !StateCheck("Korgan",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
+CHAIN IF WEIGHT #-1~OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty("Korgan") InMyArea("Korgan") !StateCheck("Korgan",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
 Global("LS_HDKorganTOB","GLOBAL",0)~ THEN ~BHAERD25~ LS_tobhdkor
 @18
 DO ~SetGlobal("LS_HDKorganTOB","GLOBAL",1)~
@@ -59,7 +59,7 @@ EXIT
 
 // Aerie-HD banter, if PC is actively cheating AND romance is committed only
 
-CHAIN IF ~Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisCheater","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty("HaerDalis") InMyArea("HaerDalis") !StateCheck("HaerDalis",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
+CHAIN IF WEIGHT #-1~Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisCheater","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty("HaerDalis") InMyArea("HaerDalis") !StateCheck("HaerDalis",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
 Global("LS_HDAerieTOB","GLOBAL",0)~ THEN ~BAERIE25~ LS_tobaehd
 @36
 DO ~SetGlobal("LS_HDAerieTOB","GLOBAL",1)~
@@ -81,7 +81,7 @@ EXIT
 
 // HD-Sarevok banter, HD sex active and Sarevok Romance sex variable 2 ONLY
 
-CHAIN IF ~OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) Global("LS_HaerDalisSex","GLOBAL",2) OR(2) Global("LS#SarevokRomanceActive","GLOBAL",1) Global("LS#SarevokRomanceActive","GLOBAL",2) GlobalGT("LS#SarevokSex","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty("Sarevok") InMyArea("Sarevok") !StateCheck("Sarevok",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
+CHAIN IF WEIGHT #-1~OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) Global("LS_HaerDalisSex","GLOBAL",2) OR(2) Global("LS#SarevokRomanceActive","GLOBAL",1) Global("LS#SarevokRomanceActive","GLOBAL",2) GlobalGT("LS#SarevokSex","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty("Sarevok") InMyArea("Sarevok") !StateCheck("Sarevok",CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Myself,CD_STATE_NOTVALID)
 Global("LS_HDSarevokTOB","GLOBAL",0)~ THEN ~BHAERD25~ LS_tobhdsarom
 @51
 DO ~SetGlobal("LS_HDSarevokTOB","GLOBAL",1)~
@@ -107,7 +107,7 @@ EXIT
 
 APPEND BIMOEN25
 
-IF ~Global("LS_HaerImoenPCToB","GLOBAL",0) OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty(Myself) InMyArea(Myself) !StateCheck(Myself,CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Player1,CD_STATE_NOTVALID)~ LS_tobimo1
+IF WEIGHT #-4~Global("LS_HaerImoenPCToB","GLOBAL",0) OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty(Myself) InMyArea(Myself) !StateCheck(Myself,CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Player1,CD_STATE_NOTVALID)~ LS_tobimo1
 SAY @65
 ++ @66 DO ~SetGlobal("LS_HaerImoenPCToB","GLOBAL",1)~ + LS_tobimo1.a
 ++ @67 DO ~SetGlobal("LS_HaerImoenPCToB","GLOBAL",1)~ + LS_tobimo1.b
@@ -212,7 +212,7 @@ END
 
 APPEND VALYG25J
 
-IF ~Global("LS_HaerValygarPCToB","GLOBAL",0) OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty(Myself) InMyArea(Myself) !StateCheck(Myself,CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Player1,CD_STATE_NOTVALID)~ LS_tobval1
+IF WEIGHT #-1~Global("LS_HaerValygarPCToB","GLOBAL",0) OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty(Myself) InMyArea(Myself) !StateCheck(Myself,CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Player1,CD_STATE_NOTVALID)~ LS_tobval1
 SAY @99
 + ~!Class(Player1,SORCERER) !Class(Player1,MAGE_ALL) !Class(Player1,BARD_ALL)~ + @100 DO ~SetGlobal("LS_HaerValygarPCToB","GLOBAL",1)~ + LS_tobval1.a1
 + ~OR(3) Class(Player1,SORCERER) Class(Player1,MAGE_ALL) Class(Player1,BARD_ALL)~ + @100 DO ~SetGlobal("LS_HaerValygarPCToB","GLOBAL",1)~ + LS_tobval1.a2
@@ -344,7 +344,7 @@ END
 
 APPEND JAHEI25J
 
-IF ~Global("LS_HaerJaheiraPCToB","GLOBAL",0) OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty(Myself) InMyArea(Myself) !StateCheck(Myself,CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Player1,CD_STATE_NOTVALID)~ LS_tobjah1
+IF WEIGHT #-1~Global("LS_HaerJaheiraPCToB","GLOBAL",0) OR(2) Global("LS_HaerDalisRomanceActive","GLOBAL",2) Global("LS_HaerDalisRomanceActive","GLOBAL",1) CombatCounter(0) !Detect([ENEMY]) InParty(Myself) InMyArea(Myself) !StateCheck(Myself,CD_STATE_NOTVALID) InParty(Myself) !StateCheck(Player1,CD_STATE_NOTVALID)~ LS_tobjah1
 SAY @138
 ++ @139 DO ~SetGlobal("LS_HaerJaheiraPCToB","GLOBAL",1)~ + LS_tobjah1.a
 ++ @140 DO ~SetGlobal("LS_HaerJaheiraPCToB","GLOBAL",1)~ + LS_tobjah1.b
@@ -453,7 +453,7 @@ END
 
 APPEND SAREV25J
 
-IF ~Global("LS_SarevokHaerDalisPC","GLOBAL",2)~ LS_tobsar1
+IF WEIGHT #-3~Global("LS_SarevokHaerDalisPC","GLOBAL",2)~ LS_tobsar1
 SAY @172
 ++ @173 DO ~SetGlobal("LS_SarevokHaerDalisPC","GLOBAL",3)~ + LS_tobsar1.a
 ++ @174 DO ~SetGlobal("LS_SarevokHaerDalisPC","GLOBAL",3)~ + LS_tobsar1.b
